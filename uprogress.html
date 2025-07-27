@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker - Zen Coders</title>
+    <link rel="stylesheet" href="uprogress.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Zen Coders</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User+2025&background=8B5CF6&color=fff&size=40" alt="User Avatar">
+                </div>
+                <span class="username">user@2025</span>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                          <li class="nav-item">
+                        <a href="uresume.html" class="nav-link">
+                            <i class="fas fa-file-upload"></i>
+                            <span>Resume Upload</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uassignment.html" class="nav-link">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assessments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="uprogress.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress Tracker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ulearning.html" class="nav-link">
+                            <i class="fas fa-route"></i>
+                            <span>Learning Path</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uhack.html" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Hackathons</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uleader.html" class="nav-link">
+                            <i class="fas fa-medal"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="usetting.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Progress Header -->
+            <div class="progress-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-chart-line"></i> Progress Tracker</h1>
+                    <p>Track your journey from profile creation to personalized learning path</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary" id="resetProgressBtn">
+                        <i class="fas fa-redo"></i>
+                        Reset Progress
+                    </button>
+                    <button class="btn-secondary" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Export Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overall Progress Stats -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="overallProgress">75%</span>
+                        <span class="stat-label">Overall Progress</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="totalTime">2h 30m</span>
+                        <span class="stat-label">Total Time</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="completedSteps">3/4</span>
+                        <span class="stat-label">Steps Completed</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="currentScore">85%</span>
+                        <span class="stat-label">Current Score</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Timeline -->
+            <div class="progress-container">
+                <div class="progress-timeline">
+                    <h2 class="timeline-title">Your Learning Journey</h2>
+                    
+                    <!-- Progress Bar Line -->
+                    <div class="progress-line">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                    <!-- Progress Nodes -->
+                    <div class="progress-nodes">
+                        <!-- Node 1: Profile Created -->
+                        <div class="progress-node completed" data-step="1" id="node1">
+                            <div class="node-circle">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="node-content">
+                                <h3 class="node-title">Profile Created</h3>
+                                <p class="node-description">Your account has been set up successfully</p>
+                                <div class="node-timestamp">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>July 22, 2025 - 09:15 AM</span>
+                                </div>
+                            </div>
+                            <div class="node-tooltip">
+                                <div class="tooltip-content">
+                                    <h4>Profile Setup Complete</h4>
+                                    <p>Account created and verified</p>
+                                    <div class="tooltip-details">
+                                        <span><i class="fas fa-clock"></i> Completed in 5 minutes</span>
+                                        <span><i class="fas fa-check"></i> All required fields filled</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 2: Assessment Completed -->
+                        <div class="progress-node completed" data-step="2" id="node2">
+                            <div class="node-circle">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div class="node-content">
+                                <h3 class="node-title">Assessment Completed</h3>
+                                <p class="node-description">Initial skill assessment has been finished</p>
+                                <div class="node-timestamp">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>July 22, 2025 - 10:30 AM</span>
+                                </div>
+                            </div>
+                            <div class="node-tooltip">
+                                <div class="tooltip-content">
+                                    <h4>Assessment Results</h4>
+                                    <p>Comprehensive skill evaluation completed</p>
+                                    <div class="tooltip-details">
+                                        <span><i class="fas fa-clock"></i> Assessment took 15 minutes</span>
+                                        <span><i class="fas fa-star"></i> Score: 85%</span>
+                                        <span><i class="fas fa-chart-bar"></i> Above average performance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 3: Skills Evaluated -->
+                        <div class="progress-node completed" data-step="3" id="node3">
+                            <div class="node-circle">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="node-content">
+                                <h3 class="node-title">Skills Evaluated</h3>
+                                <p class="node-description">Your technical skills have been analyzed</p>
+                                <div class="node-timestamp">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>July 22, 2025 - 11:45 AM</span>
+                                </div>
+                            </div>
+                            <div class="node-tooltip">
+                                <div class="tooltip-content">
+                                    <h4>Skill Analysis Complete</h4>
+                                    <p>Detailed evaluation of your technical abilities</p>
+                                    <div class="tooltip-details">
+                                        <span><i class="fas fa-clock"></i> Analysis took 8 minutes</span>
+                                        <span><i class="fas fa-code"></i> 12 skills identified</span>
+                                        <span><i class="fas fa-trophy"></i> 3 strength areas found</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Node 4: Learning Path Generated -->
+                        <div class="progress-node pending" data-step="4" id="node4">
+                            <div class="node-circle">
+                                <i class="fas fa-route"></i>
+                            </div>
+                            <div class="node-content">
+                                <h3 class="node-title">Learning Path Generated</h3>
+                                <p class="node-description">Personalized learning roadmap creation</p>
+                                <div class="node-timestamp">
+                                    <i class="fas fa-clock"></i>
+                                    <span>In Progress...</span>
+                                </div>
+                            </div>
+                            <div class="node-tooltip">
+                                <div class="tooltip-content">
+                                    <h4>Learning Path Generation</h4>
+                                    <p>Creating your personalized learning journey</p>
+                                    <div class="tooltip-details">
+                                        <span><i class="fas fa-hourglass-half"></i> Estimated: 5 minutes</span>
+                                        <span><i class="fas fa-map"></i> Customized roadmap</span>
+                                        <span><i class="fas fa-target"></i> Goal-oriented approach</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Progress Cards -->
+                <div class="progress-details">
+                    <h2>Step Details</h2>
+                    <div class="details-grid">
+                        <!-- Profile Creation Details -->
+                        <div class="detail-card completed">
+                            <div class="detail-header">
+                                <div class="detail-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="detail-info">
+                                    <h3>Profile Creation</h3>
+                                    <span class="detail-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <div class="detail-body">
+                                <div class="detail-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Duration</span>
+                                        <span class="metric-value">5 minutes</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Completion</span>
+                                        <span class="metric-value">100%</span>
+                                    </div>
+                                </div>
+                                <div class="detail-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Assessment Details -->
+                        <div class="detail-card completed">
+                            <div class="detail-header">
+                                <div class="detail-icon">
+                                    <i class="fas fa-clipboard-check"></i>
+                                </div>
+                                <div class="detail-info">
+                                    <h3>Assessment</h3>
+                                    <span class="detail-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <div class="detail-body">
+                                <div class="detail-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Duration</span>
+                                        <span class="metric-value">15 minutes</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Score</span>
+                                        <span class="metric-value">85%</span>
+                                    </div>
+                                </div>
+                                <div class="detail-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Evaluation Details -->
+                        <div class="detail-card completed">
+                            <div class="detail-header">
+                                <div class="detail-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="detail-info">
+                                    <h3>Skills Evaluation</h3>
+                                    <span class="detail-status completed">Completed</span>
+                                </div>
+                            </div>
+                            <div class="detail-body">
+                                <div class="detail-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Duration</span>
+                                        <span class="metric-value">8 minutes</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Skills Found</span>
+                                        <span class="metric-value">12</span>
+                                    </div>
+                                </div>
+                                <div class="detail-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learning Path Details -->
+                        <div class="detail-card pending">
+                            <div class="detail-header">
+                                <div class="detail-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="detail-info">
+                                    <h3>Learning Path</h3>
+                                    <span class="detail-status pending">In Progress</span>
+                                </div>
+                            </div>
+                            <div class="detail-body">
+                                <div class="detail-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Progress</span>
+                                        <span class="metric-value">60%</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">ETA</span>
+                                        <span class="metric-value">2 minutes</span>
+                                    </div>
+                                </div>
+                                <div class="detail-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill loading" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-section">
+                <button class="btn-primary" id="continueBtn">
+                    <i class="fas fa-arrow-right"></i>
+                    Continue to Learning Path
+                </button>
+                <button class="btn-secondary" id="viewReportBtn">
+                    <i class="fas fa-file-alt"></i>
+                    View Detailed Report
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Zen Coders</span>
+                </div>
+                <p>&copy; 2025 Zen Coders. All rights reserved www.Hexaware.com</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="uprogress.js"></script>
+</body>
+</html>

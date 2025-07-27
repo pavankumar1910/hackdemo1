@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Zen Coders</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Zen Coders Admin</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=Admin+2025&background=dc2626&color=fff&size=40" alt="Admin Avatar">
+                </div>
+                <span class="username">admin@2025</span>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#dashboard" class="nav-link" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#users" class="nav-link" data-section="users">
+                            <i class="fas fa-users"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#workflow" class="nav-link" data-section="workflow">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Workflow Monitor</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#hackathons" class="nav-link" data-section="hackathons">
+                            <i class="fas fa-trophy"></i>
+                            <span>Hackathon Management</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reports" class="nav-link" data-section="reports">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Reports & Analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings" class="nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard-content" class="section-content active">
+                <div class="dashboard-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Monitor and manage the Zen Coders platform</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Statistics Cards -->
+                    <div class="card stats-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-users"></i> Total Users</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-number">2,847</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12% this month
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card stats-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-tasks"></i> Active Assessments</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-number">485</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8% this week
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card stats-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-trophy"></i> Live Hackathons</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-number">3</div>
+                            <div class="stat-change neutral">
+                                <i class="fas fa-minus"></i>
+                                No change
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Workflow Monitor -->
+                    <div class="card workflow-preview-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-project-diagram"></i> Workflow Status</h3>
+                            <div class="card-action">
+                                <button class="btn-secondary" onclick="showSection('workflow')">View All</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="workflow-summary">
+                                <div class="workflow-stage">
+                                    <div class="stage-icon completed">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <span>Profile Loaded</span>
+                                    <div class="stage-count">1,234</div>
+                                </div>
+                                <div class="workflow-stage">
+                                    <div class="stage-icon completed">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <span>Assessment Done</span>
+                                    <div class="stage-count">987</div>
+                                </div>
+                                <div class="workflow-stage">
+                                    <div class="stage-icon current">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <span>Skills Evaluated</span>
+                                    <div class="stage-count">756</div>
+                                </div>
+                                <div class="workflow-stage">
+                                    <div class="stage-icon pending">
+                                        <i class="fas fa-route"></i>
+                                    </div>
+                                    <span>Path Generated</span>
+                                    <div class="stage-count">623</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="card activity-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon user-action">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <span class="activity-text">New user registered: john.doe@email.com</span>
+                                        <span class="activity-time">2 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon assessment-action">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <span class="activity-text">Assessment completed by sarah.wilson</span>
+                                        <span class="activity-time">5 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon hackathon-action">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <span class="activity-text">New hackathon submission received</span>
+                                        <span class="activity-time">12 minutes ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Section -->
+            <div id="users-content" class="section-content">
+                <div class="section-header">
+                    <h1>User Management</h1>
+                    <div class="section-actions">
+                        <button class="btn-primary" id="addUserBtn">
+                            <i class="fas fa-plus"></i>
+                            Add User
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Filters -->
+                <div class="search-filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="userSearch" placeholder="Search users by name or email...">
+                    </div>
+                    <div class="filter-group">
+                        <select id="skillFilter">
+                            <option value="">All Skills</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="react">React</option>
+                            <option value="nodejs">Node.js</option>
+                            <option value="python">Python</option>
+                        </select>
+                        <select id="scoreFilter">
+                            <option value="">All Scores</option>
+                            <option value="90-100">90-100%</option>
+                            <option value="80-89">80-89%</option>
+                            <option value="70-79">70-79%</option>
+                            <option value="0-69">Below 70%</option>
+                        </select>
+                        <select id="pathFilter">
+                            <option value="">All Paths</option>
+                            <option value="frontend">Frontend Developer</option>
+                            <option value="backend">Backend Developer</option>
+                            <option value="fullstack">Full Stack Developer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- User Table -->
+                <div class="table-container">
+                    <table class="user-table" id="userTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Skills</th>
+                                <th>Assessment Score</th>
+                                <th>Learning Path</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody">
+                            <!-- Users will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- User Details Modal -->
+                <div id="userDetailsModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>User Details</h2>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body" id="userDetailsContent">
+                            <!-- User details will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Monitor Section -->
+            <div id="workflow-content" class="section-content">
+                <div class="section-header">
+                    <h1>Workflow Monitor</h1>
+                    <div class="section-actions">
+                        <button class="btn-secondary" id="refreshWorkflow">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Workflow Progress Overview -->
+                <div class="workflow-overview">
+                    <div class="workflow-progress-bar" id="workflowProgressBar">
+                        <!-- Progress nodes will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Active Users Workflow -->
+                <div class="active-workflows">
+                    <h2>Active User Workflows</h2>
+                    <div class="workflow-list" id="workflowList">
+                        <!-- Active workflows will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hackathon Management Section -->
+            <div id="hackathons-content" class="section-content">
+                <div class="section-header">
+                    <h1>Hackathon Management</h1>
+                    <div class="section-actions">
+                        <button class="btn-primary" id="createHackathonBtn">
+                            <i class="fas fa-plus"></i>
+                            Create Hackathon
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hackathon List -->
+                <div class="hackathon-grid" id="hackathonGrid">
+                    <!-- Hackathons will be populated by JavaScript -->
+                </div>
+
+                <!-- Create Hackathon Modal -->
+                <div id="createHackathonModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Create New Hackathon</h2>
+                            <button class="modal-close">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="createHackathonForm">
+                                <div class="form-group">
+                                    <label for="hackathonName">Hackathon Name</label>
+                                    <input type="text" id="hackathonName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hackathonDescription">Description</label>
+                                    <textarea id="hackathonDescription" rows="4" required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="startDate">Start Date</label>
+                                        <input type="datetime-local" id="startDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="endDate">End Date</label>
+                                        <input type="datetime-local" id="endDate" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maxParticipants">Max Participants</label>
+                                    <input type="number" id="maxParticipants" min="1" required>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn-secondary" onclick="closeModal('createHackathonModal')">Cancel</button>
+                                    <button type="submit" class="btn-primary">Create Hackathon</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports & Analytics Section -->
+            <div id="reports-content" class="section-content">
+                <div class="section-header">
+                    <h1>Reports & Analytics</h1>
+                    <div class="section-actions">
+                        <button class="btn-secondary" id="exportReportBtn">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <!-- User Progress Chart -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> User Progress Over Time</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-placeholder" id="progressChart">
+                                <canvas id="progressChartCanvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skill Distribution -->
+                    <div class="card chart-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-pie"></i> Skill Distribution</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-placeholder" id="skillChart">
+                                <canvas id="skillChartCanvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platform Usage -->
+                    <div class="card metrics-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-bar"></i> Platform Metrics</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="metrics-list">
+                                <div class="metric-item">
+                                    <span class="metric-label">Daily Active Users</span>
+                                    <span class="metric-value">1,247</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Average Session Time</span>
+                                    <span class="metric-value">24 min</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Completion Rate</span>
+                                    <span class="metric-value">78%</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">User Satisfaction</span>
+                                    <span class="metric-value">4.6/5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-content" class="section-content">
+                <div class="section-header">
+                    <h1>Admin Settings</h1>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Platform Configuration</h3>
+                        <div class="setting-item">
+                            <label>Auto-generate Learning Paths</label>
+                            <input type="checkbox" id="autoGenerate" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>Enable Hackathon Notifications</label>
+                            <input type="checkbox" id="hackathonNotifs" checked>
+                        </div>
+                        <div class="setting-item">
+                            <label>Maximum Assessment Time (minutes)</label>
+                            <input type="number" id="maxAssessmentTime" value="60" min="30" max="180">
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Security Settings</h3>
+                        <div class="setting-item">
+                            <label>Require 2FA for Admins</label>
+                            <input type="checkbox" id="require2FA">
+                        </div>
+                        <div class="setting-item">
+                            <label>Session Timeout (hours)</label>
+                            <input type="number" id="sessionTimeout" value="8" min="1" max="24">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Zen Coders</span>
+                </div>
+                <p>&copy; 2025 Zen Coders. Empowering developers worldwide.</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

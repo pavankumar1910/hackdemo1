@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Path Status - Zen Coders</title>
+    <link rel="stylesheet" href="ulearning.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Zen Coders</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User+2025&background=8B5CF6&color=fff&size=40" alt="User Avatar">
+                </div>
+                <span class="username">user@2025</span>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                          <li class="nav-item">
+                        <a href="uresume.html" class="nav-link">
+                            <i class="fas fa-file-upload"></i>
+                            <span>Resume Upload</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uassignment.html" class="nav-link">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assessments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uprogress.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress Tracker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="ulearning.html" class="nav-link">
+                            <i class="fas fa-route"></i>
+                            <span>Learning Path</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uhack.html" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Hackathons</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uleader.html" class="nav-link">
+                            <i class="fas fa-medal"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="usetting.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Learning Path Header -->
+            <div class="learning-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-route"></i> Learning Path Status</h1>
+                    <p>Your personalized learning journey with recommended modules</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary" id="refreshPathBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh Path
+                    </button>
+                    <button class="btn-secondary" id="customizeBtn">
+                        <i class="fas fa-cog"></i>
+                        Customize
+                    </button>
+                </div>
+            </div>
+
+            <!-- Path Overview Stats -->
+            <div class="path-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="totalModules">12</span>
+                        <span class="stat-label">Total Modules</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="completedModules">4</span>
+                        <span class="stat-label">Completed</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="inProgressModules">2</span>
+                        <span class="stat-label">In Progress</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-number" id="estimatedTime">24h</span>
+                        <span class="stat-label">Est. Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learning Modules Table -->
+            <div class="modules-container">
+                <div class="modules-header">
+                    <h2>Recommended Learning Modules</h2>
+                    <div class="filter-controls">
+                        <select class="filter-select" id="statusFilter">
+                            <option value="all">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="not-started">Not Started</option>
+                        </select>
+                        <select class="filter-select" id="difficultyFilter">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modules-table">
+                    <div class="table-header">
+                        <div class="header-cell module-name">Module Name</div>
+                        <div class="header-cell estimated-time">Estimated Time</div>
+                        <div class="header-cell completion-status">Status</div>
+                        <div class="header-cell difficulty">Difficulty</div>
+                        <div class="header-cell actions">Actions</div>
+                    </div>
+
+                    <div class="table-body">
+                        <!-- Module Row 1 -->
+                        <div class="module-row" data-module-id="1">
+                            <div class="row-main">
+                                <div class="cell module-name">
+                                    <div class="module-info">
+                                        <i class="fas fa-code module-icon"></i>
+                                        <div class="module-details">
+                                            <h3>JavaScript Fundamentals</h3>
+                                            <p>Learn the basics of JavaScript programming</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell estimated-time">
+                                    <span class="time-value">6 hours</span>
+                                </div>
+                                <div class="cell completion-status">
+                                    <span class="status-badge completed">
+                                        <i class="fas fa-check"></i>
+                                        Completed
+                                    </span>
+                                </div>
+                                <div class="cell difficulty">
+                                    <span class="difficulty-badge beginner">Beginner</span>
+                                </div>
+                                <div class="cell actions">
+                                    <button class="btn-expand" title="View Details">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row-details">
+                                <div class="details-content">
+                                    <div class="module-description">
+                                        <h4>Module Overview</h4>
+                                        <p>This comprehensive module covers the fundamental concepts of JavaScript including variables, functions, objects, and DOM manipulation. Perfect for beginners starting their web development journey.</p>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Progress</span>
+                                            <span class="progress-percentage">100%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-actions">
+                                        <button class="btn-action completed">
+                                            <i class="fas fa-certificate"></i>
+                                            View Certificate
+                                        </button>
+                                        <button class="btn-action secondary">
+                                            <i class="fas fa-redo"></i>
+                                            Retake
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module Row 2 -->
+                        <div class="module-row" data-module-id="2">
+                            <div class="row-main">
+                                <div class="cell module-name">
+                                    <div class="module-info">
+                                        <i class="fab fa-react module-icon"></i>
+                                        <div class="module-details">
+                                            <h3>React Component Development</h3>
+                                            <p>Build interactive UIs with React components</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell estimated-time">
+                                    <span class="time-value">8 hours</span>
+                                </div>
+                                <div class="cell completion-status">
+                                    <span class="status-badge in-progress">
+                                        <i class="fas fa-play"></i>
+                                        In Progress
+                                    </span>
+                                </div>
+                                <div class="cell difficulty">
+                                    <span class="difficulty-badge intermediate">Intermediate</span>
+                                </div>
+                                <div class="cell actions">
+                                    <button class="btn-expand" title="View Details">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row-details">
+                                <div class="details-content">
+                                    <div class="module-description">
+                                        <h4>Module Overview</h4>
+                                        <p>Learn to build modern, interactive user interfaces using React. This module covers components, props, state management, and hooks to create dynamic web applications.</p>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Progress</span>
+                                            <span class="progress-percentage">65%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-actions">
+                                        <button class="btn-action primary">
+                                            <i class="fas fa-play"></i>
+                                            Continue Learning
+                                        </button>
+                                        <button class="btn-action secondary">
+                                            <i class="fas fa-bookmark"></i>
+                                            Bookmark
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module Row 3 -->
+                        <div class="module-row" data-module-id="3">
+                            <div class="row-main">
+                                <div class="cell module-name">
+                                    <div class="module-info">
+                                        <i class="fas fa-database module-icon"></i>
+                                        <div class="module-details">
+                                            <h3>Database Design & SQL</h3>
+                                            <p>Master database concepts and SQL queries</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell estimated-time">
+                                    <span class="time-value">10 hours</span>
+                                </div>
+                                <div class="cell completion-status">
+                                    <span class="status-badge not-started">
+                                        <i class="fas fa-clock"></i>
+                                        Not Started
+                                    </span>
+                                </div>
+                                <div class="cell difficulty">
+                                    <span class="difficulty-badge intermediate">Intermediate</span>
+                                </div>
+                                <div class="cell actions">
+                                    <button class="btn-expand" title="View Details">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row-details">
+                                <div class="details-content">
+                                    <div class="module-description">
+                                        <h4>Module Overview</h4>
+                                        <p>Comprehensive database design and SQL programming course. Learn to design efficient databases, write complex queries, and understand database optimization techniques.</p>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Progress</span>
+                                            <span class="progress-percentage">0%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-actions">
+                                        <button class="btn-action primary">
+                                            <i class="fas fa-play"></i>
+                                            Start Learning
+                                        </button>
+                                        <button class="btn-action secondary">
+                                            <i class="fas fa-info-circle"></i>
+                                            Prerequisites
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module Row 4 -->
+                        <div class="module-row" data-module-id="4">
+                            <div class="row-main">
+                                <div class="cell module-name">
+                                    <div class="module-info">
+                                        <i class="fab fa-node-js module-icon"></i>
+                                        <div class="module-details">
+                                            <h3>Node.js Backend Development</h3>
+                                            <p>Build scalable server-side applications</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell estimated-time">
+                                    <span class="time-value">12 hours</span>
+                                </div>
+                                <div class="cell completion-status">
+                                    <span class="status-badge not-started">
+                                        <i class="fas fa-clock"></i>
+                                        Not Started
+                                    </span>
+                                </div>
+                                <div class="cell difficulty">
+                                    <span class="difficulty-badge advanced">Advanced</span>
+                                </div>
+                                <div class="cell actions">
+                                    <button class="btn-expand" title="View Details">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row-details">
+                                <div class="details-content">
+                                    <div class="module-description">
+                                        <h4>Module Overview</h4>
+                                        <p>Advanced Node.js development covering Express.js, RESTful APIs, authentication, middleware, and deployment strategies for production-ready applications.</p>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Progress</span>
+                                            <span class="progress-percentage">0%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-actions">
+                                        <button class="btn-action disabled">
+                                            <i class="fas fa-lock"></i>
+                                            Locked
+                                        </button>
+                                        <button class="btn-action secondary">
+                                            <i class="fas fa-info-circle"></i>
+                                            Prerequisites
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Module Row 5 -->
+                        <div class="module-row" data-module-id="5">
+                            <div class="row-main">
+                                <div class="cell module-name">
+                                    <div class="module-info">
+                                        <i class="fab fa-python module-icon"></i>
+                                        <div class="module-details">
+                                            <h3>Python Data Analysis</h3>
+                                            <p>Analyze data with Python and pandas</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell estimated-time">
+                                    <span class="time-value">15 hours</span>
+                                </div>
+                                <div class="cell completion-status">
+                                    <span class="status-badge in-progress">
+                                        <i class="fas fa-play"></i>
+                                        In Progress
+                                    </span>
+                                </div>
+                                <div class="cell difficulty">
+                                    <span class="difficulty-badge intermediate">Intermediate</span>
+                                </div>
+                                <div class="cell actions">
+                                    <button class="btn-expand" title="View Details">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row-details">
+                                <div class="details-content">
+                                    <div class="module-description">
+                                        <h4>Module Overview</h4>
+                                        <p>Learn data analysis and visualization using Python. Covers pandas, numpy, matplotlib, and seaborn for comprehensive data manipulation and insights.</p>
+                                    </div>
+                                    <div class="module-progress">
+                                        <div class="progress-info">
+                                            <span class="progress-label">Progress</span>
+                                            <span class="progress-percentage">30%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-actions">
+                                        <button class="btn-action primary">
+                                            <i class="fas fa-play"></i>
+                                            Continue Learning
+                                        </button>
+                                        <button class="btn-action secondary">
+                                            <i class="fas fa-download"></i>
+                                            Resources
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Zen Coders</span>
+                </div>
+                <p>&copy; 2025 Zen Coders. All rights reserved www.Hexaware.com</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+   <script src="ulearning.js"></script>
+</body>
+</html>

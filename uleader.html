@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard & Achievements - Zen Coders</title>
+    <link rel="stylesheet" href="uleader.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Zen Coders</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User+2025&background=8B5CF6&color=fff&size=40" alt="User Avatar">
+                </div>
+                <span class="username">user@2025</span>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                          <li class="nav-item">
+                        <a href="uresume.html" class="nav-link" >
+                            <i class="fas fa-file-upload"></i>
+                            <span>Resume Upload</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uassignment.html" class="nav-link">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assessments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uprogress.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress Tracker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ulearning.html" class="nav-link">
+                            <i class="fas fa-route"></i>
+                            <span>Learning Path</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uhack.html" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Hackathons</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="uleader.html" class="nav-link">
+                            <i class="fas fa-medal"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="usetting.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-trophy"></i> Leaderboard & Achievements</h1>
+                <p>Track your progress and see how you rank among other developers</p>
+            </div>
+
+            <!-- User Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">#47</span>
+                        <span class="stat-label">Global Rank</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">2,450</span>
+                        <span class="stat-label">Total Points</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Achievements</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <!-- Leaderboard Section -->
+                <div class="leaderboard-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-ranking-star"></i> Global Leaderboard</h2>
+                        <div class="filter-tabs">
+                            <button class="filter-tab active" data-filter="global">Global</button>
+                            <button class="filter-tab" data-filter="monthly">Monthly</button>
+                            <button class="filter-tab" data-filter="weekly">Weekly</button>
+                        </div>
+                    </div>
+
+                    <!-- Top 3 Podium -->
+                    <div class="podium">
+                        <div class="podium-position second">
+                            <div class="podium-user">
+                                <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=C0C0C0&color=fff&size=60" alt="Alex Johnson">
+                                <h4>Alex Johnson</h4>
+                                <span class="points">3,850 pts</span>
+                            </div>
+                            <div class="podium-rank">2</div>
+                        </div>
+                        <div class="podium-position first">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="podium-user">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Chen&background=FFD700&color=fff&size=80" alt="Sarah Chen">
+                                <h4>Sarah Chen</h4>
+                                <span class="points">4,320 pts</span>
+                            </div>
+                            <div class="podium-rank">1</div>
+                        </div>
+                        <div class="podium-position third">
+                            <div class="podium-user">
+                                <img src="https://ui-avatars.com/api/?name=Mike+Williams&background=CD7F32&color=fff&size=60" alt="Mike Williams">
+                                <h4>Mike Williams</h4>
+                                <span class="points">3,200 pts</span>
+                            </div>
+                            <div class="podium-rank">3</div>
+                        </div>
+                    </div>
+
+                    <!-- Leaderboard List -->
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item">
+                            <span class="rank">4</span>
+                            <div class="user-info">
+                                <img src="https://ui-avatars.com/api/?name=Emma+Davis&background=8B5CF6&color=fff&size=40" alt="Emma Davis">
+                                <div class="user-details">
+                                    <span class="name">Emma Davis</span>
+                                    <span class="title">Full Stack Developer</span>
+                                </div>
+                            </div>
+                            <span class="points">2,980 pts</span>
+                            <div class="trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+120</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">5</span>
+                            <div class="user-info">
+                                <img src="https://ui-avatars.com/api/?name=David+Wilson&background=10B981&color=fff&size=40" alt="David Wilson">
+                                <div class="user-details">
+                                    <span class="name">David Wilson</span>
+                                    <span class="title">Frontend Developer</span>
+                                </div>
+                            </div>
+                            <span class="points">2,750 pts</span>
+                            <div class="trend down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>-45</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item current-user">
+                            <span class="rank">47</span>
+                            <div class="user-info">
+                                <img src="https://ui-avatars.com/api/?name=User+2025&background=8B5CF6&color=fff&size=40" alt="You">
+                                <div class="user-details">
+                                    <span class="name">You (user@2025)</span>
+                                    <span class="title">Developer</span>
+                                </div>
+                            </div>
+                            <span class="points">2,450 pts</span>
+                            <div class="trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+85</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">48</span>
+                            <div class="user-info">
+                                <img src="https://ui-avatars.com/api/?name=Lisa+Garcia&background=F59E0B&color=fff&size=40" alt="Lisa Garcia">
+                                <div class="user-details">
+                                    <span class="name">Lisa Garcia</span>
+                                    <span class="title">Backend Developer</span>
+                                </div>
+                            </div>
+                            <span class="points">2,380 pts</span>
+                            <div class="trend up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+32</span>
+                            </div>
+                        </div>
+
+                        <div class="leaderboard-item">
+                            <span class="rank">49</span>
+                            <div class="user-info">
+                                <img src="https://ui-avatars.com/api/?name=Tom+Brown&background=EF4444&color=fff&size=40" alt="Tom Brown">
+                                <div class="user-details">
+                                    <span class="name">Tom Brown</span>
+                                    <span class="title">Mobile Developer</span>
+                                </div>
+                            </div>
+                            <span class="points">2,290 pts</span>
+                            <div class="trend stable">
+                                <i class="fas fa-minus"></i>
+                                <span>0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Section -->
+                <div class="achievements-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-trophy"></i> Your Achievements</h2>
+                        <div class="achievement-progress">
+                            <span>8 of 24 earned</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 33%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievements-grid">
+                        <!-- Earned Achievements -->
+                        <div class="achievement-card earned" data-achievement="first-assessment">
+                            <div class="achievement-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>First Steps</h4>
+                                <p>Complete your first assessment</p>
+                                <span class="earned-date">Earned 2 weeks ago</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="streak-master">
+                            <div class="achievement-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Streak Master</h4>
+                                <p>Maintain a 7-day learning streak</p>
+                                <span class="earned-date">Earned 1 week ago</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="code-warrior">
+                            <div class="achievement-icon">
+                                <i class="fas fa-sword"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Code Warrior</h4>
+                                <p>Complete 10 coding challenges</p>
+                                <span class="earned-date">Earned 5 days ago</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="hackathon-hero">
+                            <div class="achievement-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Hackathon Hero</h4>
+                                <p>Participate in your first hackathon</p>
+                                <span class="earned-date">Earned 3 days ago</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="js-expert">
+                            <div class="achievement-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>JavaScript Expert</h4>
+                                <p>Master JavaScript fundamentals</p>
+                                <span class="earned-date">Earned 1 day ago</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="team-player">
+                            <div class="achievement-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Team Player</h4>
+                                <p>Collaborate on a team project</p>
+                                <span class="earned-date">Earned yesterday</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="fast-learner">
+                            <div class="achievement-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Fast Learner</h4>
+                                <p>Complete a course in record time</p>
+                                <span class="earned-date">Earned today</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card earned" data-achievement="mentor">
+                            <div class="achievement-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Mentor</h4>
+                                <p>Help 5 other developers</p>
+                                <span class="earned-date">Earned today</span>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+
+                        <!-- Locked Achievements -->
+                        <div class="achievement-card locked" data-achievement="perfectionist">
+                            <div class="achievement-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Perfectionist</h4>
+                                <p>Score 100% on 5 assessments</p>
+                                <div class="progress-info">
+                                    <span>Progress: 3/5</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-fill" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card locked" data-achievement="marathon-runner">
+                            <div class="achievement-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Marathon Runner</h4>
+                                <p>Maintain a 30-day streak</p>
+                                <div class="progress-info">
+                                    <span>Progress: 15/30 days</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card locked" data-achievement="full-stack-master">
+                            <div class="achievement-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Full Stack Master</h4>
+                                <p>Complete all technology tracks</p>
+                                <div class="progress-info">
+                                    <span>Progress: 4/8 tracks</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-fill" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+
+                        <div class="achievement-card locked" data-achievement="community-champion">
+                            <div class="achievement-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Community Champion</h4>
+                                <p>Get 100 likes on forum posts</p>
+                                <div class="progress-info">
+                                    <span>Progress: 67/100 likes</span>
+                                    <div class="mini-progress">
+                                        <div class="mini-fill" style="width: 67%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="achievement-badge">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Zen Coders</span>
+                </div>
+                <p>&copy; 2025 Zen Coders. Empowering developers worldwide.</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="achievement-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-achievement">
+                <div class="modal-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 id="modalTitle">Achievement Title</h3>
+                <p id="modalDescription">Achievement description goes here.</p>
+                <div id="modalProgress" class="modal-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="uleader.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Upload - Zen Coders</title>
+    <link rel="stylesheet" href="uresume.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>Zen Coders</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="user-info">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User+2025&background=8B5CF6&color=fff&size=40" alt="User Avatar">
+                </div>
+                <span class="username">user@2025</span>
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="uresume.html" class="nav-link">
+                            <i class="fas fa-file-upload"></i>
+                            <span>Resume Upload</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uassignment.html" class="nav-link">
+                            <i class="fas fa-tasks"></i>
+                            <span>Assessments</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uprogress.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Progress Tracker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ulearning.html" class="nav-link">
+                            <i class="fas fa-route"></i>
+                            <span>Learning Path</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uhack.html" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Hackathons</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="uleader.html" class="nav-link">
+                            <i class="fas fa-medal"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="usetting.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-file-upload"></i> Resume Upload & Analysis</h1>
+                <p>Upload your resume to get personalized learning recommendations and skill analysis</p>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-card">
+                    <!-- Upload Zone -->
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drop your resume here</h3>
+                            <p>or <button class="browse-btn" id="browseBtn">browse to upload</button></p>
+                            <div class="file-types">
+                                <span>Supported formats: PDF, DOC, DOCX, TXT (Max 10MB)</span>
+                            </div>
+                        </div>
+                        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx,.txt" hidden>
+                    </div>
+
+                    <!-- File Info Display -->
+                    <div class="file-info" id="fileInfo" style="display: none;">
+                        <div class="file-details">
+                            <div class="file-meta">
+                                <div class="file-name" id="fileName">filename.pdf</div>
+                                <div class="file-size" id="fileSize">1.2 MB</div>
+                            </div>
+                            <button class="remove-file" id="removeFile">
+                                <i class="fas fa-times"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Upload Progress -->
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progressText">0%</span>
+                            <span>Uploading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Extraction Card -->
+                <div class="extraction-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-brain"></i> AI Analysis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="extraction-content" id="extractionContent">
+                            <div class="extraction-placeholder">
+                                <i class="fas fa-brain"></i>
+                                <h4>Waiting for Resume</h4>
+                                <p>Upload your resume to see AI-powered analysis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Results -->
+            <div class="results-section" id="resultsSection">
+                <div class="results-grid">
+                    <!-- Personal Information Card -->
+                    <div class="result-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="personalInfo">
+                                <div class="info-placeholder">
+                                    <i class="fas fa-id-card"></i>
+                                    <p>Personal details will appear here after upload</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Analysis Card -->
+                    <div class="result-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-tools"></i> Skills Analysis</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="skillsAnalysis">
+                                <div class="skills-placeholder">
+                                    <i class="fas fa-tools"></i>
+                                    <p>Skill analysis will appear here after upload</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Timeline Card -->
+                    <div class="result-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-briefcase"></i> Experience Timeline</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="experienceTimeline">
+                                <div class="timeline-placeholder">
+                                    <i class="fas fa-clock"></i>
+                                    <p>Experience timeline will appear here after upload</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations Card -->
+                    <div class="result-card recommendations-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-lightbulb"></i> AI Recommendations</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="recommendations">
+                                <div class="recommendations-placeholder">
+                                    <i class="fas fa-magic"></i>
+                                    <p>Personalized recommendations will appear here after analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Zen Coders</span>
+                </div>
+                <p>&copy; 2025 Zen Coders. Empowering developers worldwide.</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="uresume.js"></script>
+</body>
+</html>
